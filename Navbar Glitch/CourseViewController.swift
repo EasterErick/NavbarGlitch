@@ -39,6 +39,13 @@ class CourseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
+        // Add view behind searchBar to cover up weird ui effect during transmission
+        let view = UIView()
+        view.backgroundColor = .white
+        view.frame = CGRect(x: 0, y: -80, width: searchBar.bounds.width, height: 80)
+        searchBar.addSubview(view)
+        searchBar.sendSubviewToBack(view)
+        
         // Progress Bar
         progressView.trackTintColor = .gray
         progressView.progressTintColor = .blue
